@@ -5,23 +5,36 @@ import './App.css'
 function App() {
   const ditherRef = useRef(null)
 
-  const handleMouseMove = useCallback((e) => {
+  const setMask = useCallback((x, y) => {
     if (ditherRef.current) {
-      const mask = `radial-gradient(circle 150px at ${e.clientX}px ${e.clientY}px, transparent 0%, transparent 20%, black 100%)`
+      const mask = `radial-gradient(circle 150px at ${x}px ${y}px, transparent 0%, transparent 20%, black 100%)`
       ditherRef.current.style.maskImage = mask
       ditherRef.current.style.webkitMaskImage = mask
     }
   }, [])
 
-  const handleMouseLeave = useCallback(() => {
+  const clearMask = useCallback(() => {
     if (ditherRef.current) {
       ditherRef.current.style.maskImage = ''
       ditherRef.current.style.webkitMaskImage = ''
     }
   }, [])
 
+  const handleMouseMove = useCallback((e) => setMask(e.clientX, e.clientY), [setMask])
+
+  const handleTouchMove = useCallback((e) => {
+    const touch = e.touches[0]
+    if (touch) setMask(touch.clientX, touch.clientY)
+  }, [setMask])
+
   return (
-    <div className="app-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <div
+      className="app-container"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={clearMask}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={clearMask}
+    >
       <div className="background-text">
         Nick Sajer
       </div>
