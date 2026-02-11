@@ -1,0 +1,17 @@
+.scroll-reveal {
+  margin: 0;
+  text-align: center;
+}
+
+.scroll-reveal-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.word {
+  display: inline-block;
+}
