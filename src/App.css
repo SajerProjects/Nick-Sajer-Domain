@@ -21,6 +21,20 @@
   pointer-events: none;
 }
 
+.instagram-link {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2;
+  color: #a0a0a0;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.instagram-link:hover {
+  color: #ffffff;
+}
+
 .dither-layer {
   position: fixed;
   inset: 0;
