@@ -1,9 +1,11 @@
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useState } from 'react'
 import Dither from './components/Dither/Dither'
+import WaitlistModal from './components/WaitlistModal/WaitlistModal'
 import './App.css'
 
 function App() {
   const ditherRef = useRef(null)
+  const [waitlistOpen, setWaitlistOpen] = useState(false)
 
   const setMask = useCallback((x, y) => {
     if (ditherRef.current) {
@@ -38,6 +40,10 @@ function App() {
       <div className="background-text">
         Nick Sajer
       </div>
+
+      <button className="waitlist-button" onClick={() => setWaitlistOpen(true)}>
+        Join Waitlist
+      </button>
 
       <div className="social-links">
         <a
@@ -115,6 +121,8 @@ function App() {
           </svg>
         </a>
       </div>
+
+      <WaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
 
       <div className="dither-layer" ref={ditherRef}>
         <Dither

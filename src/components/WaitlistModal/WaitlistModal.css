@@ -1,0 +1,125 @@
+.waitlist-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.waitlist-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.waitlist-card {
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  padding: 2.5rem 2rem;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #0a0a0a;
+}
+
+.waitlist-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.waitlist-close:hover {
+  color: #ffffff;
+}
+
+.waitlist-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a0a0a0;
+  margin: 0 0 1.5rem;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.waitlist-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.waitlist-input::placeholder {
+  color: #555;
+}
+
+.waitlist-input:focus {
+  border-color: #a0a0a0;
+}
+
+.waitlist-submit {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+  background: #a0a0a0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.waitlist-submit:hover:not(:disabled) {
+  background: #ffffff;
+}
+
+.waitlist-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.waitlist-input:disabled {
+  opacity: 0.5;
+}
+
+.waitlist-status {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  margin: 0;
+  text-align: center;
+}
+
+.waitlist-status.success {
+  color: #4ade80;
+  padding: 1rem 0;
+}
+
+.waitlist-status.error {
+  color: #f87171;
+}
