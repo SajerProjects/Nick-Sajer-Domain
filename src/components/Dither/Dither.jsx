@@ -5,6 +5,7 @@ import { EffectComposer, wrapEffect } from '@react-three/postprocessing';
 import { Effect } from 'postprocessing';
 import * as THREE from 'three';
 
+import WanderingSnake from './WanderingSnake';
 import './Dither.css';
 
 const waveVertexShader = `
@@ -244,6 +245,8 @@ function DitheredWaves({
           uniforms={waveUniformsRef.current}
         />
       </mesh>
+
+      <WanderingSnake />
 
       <EffectComposer>
         <RetroEffect colorNum={colorNum} pixelSize={pixelSize} />
