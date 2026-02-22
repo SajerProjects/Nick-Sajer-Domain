@@ -3,12 +3,12 @@ import { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const SEGMENT_COUNT = 25;
+const SEGMENT_COUNT = 18;
 const BUFFER_SIZE = 300;
-const SPACING = 8;
+const SPACING = 6;
 const SPEED = 2.5;
-const HEAD_RADIUS = 0.12;
-const TAIL_RADIUS = 0.04;
+const HEAD_RADIUS = 0.07;
+const TAIL_RADIUS = 0.025;
 
 export default function WanderingSnake() {
   const { viewport } = useThree();
