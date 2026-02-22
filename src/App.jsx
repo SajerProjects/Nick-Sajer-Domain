@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
 import LightRays from './components/LightRays/LightRays'
 import WaitlistModal from './components/WaitlistModal/WaitlistModal'
+import About from './components/About/About'
 import profilePicture from './assets/profile-picture.jpeg'
 import './App.css'
 
-function App() {
+function Landing() {
   const [waitlistOpen, setWaitlistOpen] = useState(false)
 
   return (
-    <div className="app-container">
+    <>
       <div className="center-stack">
         <img
           className="profile-picture"
@@ -16,7 +18,6 @@ function App() {
           alt="Nick Sajer"
         />
 
-        <h1 className="site-name">Nick Sajer</h1>
         <p className="tagline">AI / Finance</p>
 
         <div className="social-links">
@@ -99,9 +100,28 @@ function App() {
         <button className="waitlist-button" onClick={() => setWaitlistOpen(true)}>
           Join Waitlist
         </button>
+
       </div>
 
       <WaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
+    </>
+  )
+}
+
+function App() {
+  return (
+    <div className="app-container">
+      <nav className="navbar">
+        <Link to="/" className="nav-logo">Nick Sajer</Link>
+        <div className="nav-links">
+          <Link to="/about" className="nav-link">About</Link>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
 
       <div className="dither-layer">
         <LightRays
