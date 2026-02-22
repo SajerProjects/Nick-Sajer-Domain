@@ -21,17 +21,23 @@
   pointer-events: none;
 }
 
-.instagram-link {
+.social-links {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   z-index: 2;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-link {
   color: #a0a0a0;
   transition: color 0.2s ease;
   text-decoration: none;
 }
 
-.instagram-link:hover {
+.social-link:hover {
   color: #ffffff;
 }
 
