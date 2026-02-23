@@ -6,6 +6,11 @@
   padding: 5rem 2rem 3rem;
   max-width: 640px;
   margin: 0 auto;
+  scrollbar-width: none;
+}
+
+.about-container::-webkit-scrollbar {
+  display: none;
 }
 
 .about-title {
