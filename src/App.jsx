@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import { getCalApi } from '@calcom/embed-react'
 import LightRays from './components/LightRays/LightRays'
 import About from './components/About/About'
-import profilePicture from './assets/profile-picture.jpeg'
+import profilePicture from './assets/profile-picture.png'
 import './App.css'
 
 function Landing() {
