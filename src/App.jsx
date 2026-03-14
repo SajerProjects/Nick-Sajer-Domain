@@ -1,13 +1,23 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
+import { getCalApi } from '@calcom/embed-react'
 import LightRays from './components/LightRays/LightRays'
-import WaitlistModal from './components/WaitlistModal/WaitlistModal'
 import About from './components/About/About'
 import profilePicture from './assets/profile-picture.jpeg'
 import './App.css'
 
 function Landing() {
-  const [waitlistOpen, setWaitlistOpen] = useState(false)
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: '30min' })
+      cal('ui', {
+        theme: 'dark',
+        styles: { branding: { brandColor: '#a0a0a0' } },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      })
+    })()
+  }, [])
 
   return (
     <>
@@ -18,7 +28,7 @@ function Landing() {
           alt="Nick Sajer"
         />
 
-        <p className="tagline">AI / Finance</p>
+        <p className="tagline">AI | Finance | Content</p>
 
         <div className="social-links">
           <a
@@ -97,13 +107,16 @@ function Landing() {
           </a>
         </div>
 
-        <button className="waitlist-button" onClick={() => setWaitlistOpen(true)}>
-          Join Waitlist
+        <button
+          className="waitlist-button"
+          data-cal-namespace="30min"
+          data-cal-link="nick-sajer-mdjgjd/30min"
+          data-cal-config='{"layout":"month_view"}'
+        >
+          Book a Call
         </button>
 
       </div>
-
-      <WaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
     </>
   )
 }
