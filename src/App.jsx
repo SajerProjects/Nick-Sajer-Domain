@@ -72,7 +72,7 @@ function Landing() {
             </svg>
           </a>
           <a
-            href="https://x.com/Sajer_Projects"
+            href="https://x.com/Nick_Projects1"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
