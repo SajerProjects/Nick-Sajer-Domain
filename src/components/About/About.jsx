@@ -33,6 +33,12 @@ function About() {
           in their careers, businesses, and daily lives. I believe the biggest
           gap in AI right now isn't the technology — it's the understanding.
         </p>
+        <p>
+          I'm also curating a private community in New York City for builders,
+          operators, and independent thinkers. The focus is putting the right
+          people in the same room. Most communities optimize for size — this
+          one optimizes for quality.
+        </p>
       </section>
 
       <section className="about-section">
