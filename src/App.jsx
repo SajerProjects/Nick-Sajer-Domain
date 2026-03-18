@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { getCalApi } from '@calcom/embed-react'
 import LightRays from './components/LightRays/LightRays'
@@ -6,7 +6,7 @@ import About from './components/About/About'
 import profilePicture from './assets/profile-picture.png'
 import './App.css'
 
-function Landing() {
+function Landing({ introDone }) {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: '30min' })
@@ -21,7 +21,7 @@ function Landing() {
 
   return (
     <>
-      <div className="center-stack">
+      <div className={`center-stack ${introDone ? 'content-visible' : 'content-hidden'}`}>
         <img
           className="profile-picture"
           src={profilePicture}
@@ -122,9 +122,30 @@ function Landing() {
 }
 
 function App() {
+  const [introPhase, setIntroPhase] = useState('text-in')
+  const introDone = introPhase === 'done'
+
+  useEffect(() => {
+    // Phase 1: "Nick Sajer" fades in (handled by CSS animation)
+    // Phase 2: After 1.5s, start fading out the intro overlay
+    const fadeOutTimer = setTimeout(() => setIntroPhase('fading'), 1500)
+    // Phase 3: After overlay fade completes (0.8s), remove it entirely
+    const doneTimer = setTimeout(() => setIntroPhase('done'), 2300)
+    return () => {
+      clearTimeout(fadeOutTimer)
+      clearTimeout(doneTimer)
+    }
+  }, [])
+
   return (
     <div className="app-container">
-      <nav className="navbar">
+      {!introDone && (
+        <div className={`intro-overlay ${introPhase === 'fading' ? 'intro-fade-out' : ''}`}>
+          <h1 className="intro-name">Nick Sajer</h1>
+        </div>
+      )}
+
+      <nav className={`navbar ${introDone ? 'content-visible' : 'content-hidden'}`}>
         <Link to="/" className="nav-logo">Nick Sajer</Link>
         <div className="nav-links">
           <Link to="/about" className="nav-link">About</Link>
@@ -132,11 +153,11 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Landing introDone={introDone} />} />
         <Route path="/about" element={<About />} />
       </Routes>
 
-      <div className="dither-layer">
+      <div className={`dither-layer ${introDone ? 'content-visible' : 'content-hidden'}`}>
         <LightRays
           raysOrigin="top-center"
           raysColor="#7b8fc6"
