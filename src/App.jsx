@@ -89,7 +89,7 @@ function Landing({ introDone }) {
             </svg>
           </a>
           <a
-            href="https://www.tiktok.com/@nicksajer"
+            href="https://www.tiktok.com/@nick_projects1"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"
