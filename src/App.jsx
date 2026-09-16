@@ -28,7 +28,7 @@ function Landing({ introDone }) {
           alt="Nick Sajer"
         />
 
-        <p className="tagline">AI | Finance | Content</p>
+        <p className="tagline">AI | Entrepreneurship | Content | Finance</p>
 
         <div className="social-links">
           <a
